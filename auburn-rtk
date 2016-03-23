@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# Use the Auburn University CORS stream to do RTK over a serial port.
+# Looks for the `ntripclient` executable in the same directory as this file is 
+# stored. This won't work if the last component of the path is a symlink. To 
+# deal with that situation, replace line 21 with the solution at:
+#    http://stackoverflow.com/a/246128/1422521
+#
+# Configure your receiver to take RTCM v3 RTK corrections at 9600 baud (note that
+# the baud rate is changeable)
+#
+# Usage:
+#   auburn-rtk /dev/ttyUSB0
+#
+# Author: Robert Cofield, 2016
+#
+
+RTK_OUT_SERIAL_PORT=$1
+AU_CORS_IP=205.172.52.26
+AU_CORS_PORT=14305
+NTRIPCLIENT_FOLDER="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+$NTRIPCLIENT_FOLDER/ntripclient -s $AU_CORS_IP -r $AU_CORS_PORT > $RTK_OUT_SERIAL_PORT
