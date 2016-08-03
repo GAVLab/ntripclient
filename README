@@ -195,3 +195,9 @@ Further Information
 -------------------
 http://igs.bkg.bund.de/index_ntrip.htm
 euref-ip@bkg.bund.de
+
+
+Syntax
+----------
+./ntripclient -S 205.172.52.26 -R 14305 -D /dev/ttyUSB0 -B 9600 > /dev/ttyUSB0
+
